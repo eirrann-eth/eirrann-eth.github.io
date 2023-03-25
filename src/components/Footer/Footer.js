@@ -48,7 +48,7 @@ function Footer() {
         <br />
         If you have any questions or feedback, please don't hesitate to get in touch! You can reach out with a message on Twitter.
         <br />
-        <Link href="https://twitter.com/eirrann" target="_blank" rel="noopener" className={classes.link}>
+        <Link href="https://twitter.com/eirrann_eth" target="_blank" rel="noopener" className={classes.link}>
           Message on Twitter
         </Link>
       </Typography>
