@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.0522d133.css","mappings":"AAAA,KACI,QAAS,CACT,SACF,CCHF,mBACI,YACF","sources":["index.css","components/Showcase/Showcase.css"],"sourcesContent":["body {\r\n    margin: 0;\r\n    padding: 0;\r\n  }\r\n  \r\n  /* add more styles here as needed */\r\n  ",".showcaseContainer {\r\n    padding: 24px;\r\n  }\r\n  "],"names":[],"sourceRoot":""}
