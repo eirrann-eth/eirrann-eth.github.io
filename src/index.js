@@ -11,7 +11,7 @@ import Contact from './components/Contact/Contact';
 import Privacy from './components/Privacy/Privacy';
 import Terms from './components/Terms/Terms';
 import Footer from './components/Footer/Footer';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Define main component
 function App() {
@@ -19,13 +19,15 @@ function App() {
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <div>
         <Header />
-        <Home />
-        <About />
-        <Gallery />
-        <Showcase />
-        <Contact />
-        <Privacy />
-        <Terms />
+          <Routes>
+             <Route path="/" element={<Home />} />
+             <Route path="/about" element={<About />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/showcase" element={<Showcase />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/privacy" element={<Privacy />} />
+             <Route path="/terms" element={<Terms />} />
+            </Routes>
         <Footer />
       </div>
     </BrowserRouter>
