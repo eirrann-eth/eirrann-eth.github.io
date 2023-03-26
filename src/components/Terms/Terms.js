@@ -24,3 +24,4 @@ function Terms() {
         We will not be liable for any damages of any kind arising from the use of our website, including but not limited to direct, indirect, incidental, punitive, and consequential damages.
       </p>
     </div>
+    
