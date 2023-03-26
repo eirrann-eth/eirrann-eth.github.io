@@ -6,8 +6,6 @@ import About from './components/About/About';
 import Gallery from './components/Gallery/Gallery';
 import Showcase from './components/Showcase/Showcase';
 import Contact from './components/Contact/Contact';
-import Privacy from './components/Privacy/Privacy';
-import Terms from './components/Terms/Terms';
 import Footer from './components/Footer/Footer';
 
 const useStyles = makeStyles(() => ({

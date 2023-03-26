@@ -25,25 +25,6 @@ function Footer() {
         Powered by React and Material UI
       </Typography>
       <Typography variant="body2" component="p">
-        <Link href="/privacy" className={classes.link}>
-          Privacy Policy
-        </Link>
-        <Link href="/terms" className={classes.link}>
-          Terms of Use
-        </Link>
-      </Typography>
-      <Typography variant="body2" component="p">
-        <Link href="/work" className={classes.link}>
-          Work
-        </Link>
-        <Link href="/gallery" className={classes.link}>
-          Gallery
-        </Link>
-        <Link href="/showcase" className={classes.link}>
-          Showcase
-        </Link>
-      </Typography>
-      <Typography variant="body2" component="p">
         Contact eirrann.eth
         <br />
         If you have any questions or feedback, please don't hesitate to get in touch! You can reach out with a message on Twitter.

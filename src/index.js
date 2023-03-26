@@ -10,8 +10,6 @@ import About from './components/About/About';
 import Gallery from './components/Gallery/Gallery';
 import Showcase from './components/Showcase/Showcase';
 import Contact from './components/Contact/Contact';
-import Privacy from './components/Privacy/Privacy';
-import Terms from './components/Terms/Terms';
 import Footer from './components/Footer/Footer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -27,8 +25,6 @@ function Main() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/showcase" element={<Showcase />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/terms" element={<Terms />} />
         </Routes>
       </main>
       <Footer />

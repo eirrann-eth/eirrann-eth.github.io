@@ -1,8 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
+  font-family: ${({ theme }) => theme.typography.fontFamily};
+  font-size: ${({ theme }) => theme.typography.body1.fontSize};
   color: ${({ theme }) => theme.palette.text.primary};
   background-color: ${({ theme }) => theme.palette.background.default};
 }
@@ -21,18 +21,18 @@ a:hover {
 
 /* styles for header component */
 header {
-  background-color: ${({ theme }) => theme.palette.background.paper};
-  box-shadow: ${({ theme }) => theme.shadows[1]};
+  background-color: ${({ theme }) => theme.palette.primary.dark};
+  box-shadow: ${({ theme }) => theme.shadows[2]};
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: ${({ theme }) => theme.zIndex.appBar};
 }
 
 /* styles for main content container */
 main {
   margin: 0 auto;
-  max-width: 960px;
-  padding: 1em;
+  max-width: ${({ theme }) => theme.breakpoints.values.lg}px;
+  padding: ${({ theme }) => theme.spacing(2)};
 }
 
 /* styles for headings */
@@ -76,11 +76,11 @@ li {
 
 /* styles for footer component */
 footer {
-  background-color: ${({ theme }) => theme.palette.background.paper};
-  box-shadow: ${({ theme }) => theme.shadows[1]};
+  background-color: ${({ theme }) => theme.palette.primary.dark};
+  box-shadow: ${({ theme }) => theme.shadows[2]};
   position: sticky;
   bottom: 0;
-  z-index: 100;
+  z-index: ${({ theme }) => theme.zIndex.appBar};
   text-align: center;
   padding: ${({ theme }) => theme.spacing(2)};
 }
