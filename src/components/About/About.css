@@ -1,50 +1,49 @@
 .aboutContainer {
-    padding: 80px 16px;
-    max-width: 1200px;
-    margin: 0 auto;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.aboutTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.aboutText {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 600px) {
+  .aboutContainer {
+    padding: 3rem;
   }
-  
+
   .aboutTitle {
-    font-size: 48px;
-    font-weight: bold;
-    margin-bottom: 40px;
+    font-size: 3rem;
+    margin-bottom: 4rem;
   }
-  
+
   .aboutText {
-    font-size: 20px;
-    line-height: 1.5;
-    margin-bottom: 40px;
+    font-size: 1.2rem;
+    margin-bottom: 4rem;
   }
-  
-  @media (min-width: 600px) {
-    .aboutContainer {
-      padding: 100px 24px;
-    }
-  
-    .aboutTitle {
-      font-size: 56px;
-      margin-bottom: 64px;
-    }
-  
-    .aboutText {
-      font-size: 24px;
-      margin-bottom: 64px;
-    }
+}
+
+@media (min-width: 960px) {
+  .aboutContainer {
+    padding: 4rem;
   }
-  
-  @media (min-width: 960px) {
-    .aboutContainer {
-      padding: 120px 40px;
-    }
-  
-    .aboutTitle {
-      font-size: 72px;
-      margin-bottom: 80px;
-    }
-  
-    .aboutText {
-      font-size: 28px;
-      margin-bottom: 80px;
-    }
+
+  .aboutTitle {
+    font-size: 4rem;
+    margin-bottom: 5rem;
   }
-  
+
+  .aboutText {
+    font-size: 1.4rem;
+    margin-bottom: 5rem;
+  }
+}

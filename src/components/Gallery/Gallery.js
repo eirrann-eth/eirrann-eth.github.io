@@ -24,7 +24,3 @@ function Gallery() {
 }
 
 export default Gallery;
-
-
-//For gallery.js, I want to be able to easily add new parts to the page for each collection, and within each collection, include links to the listing pages on foundation and manifold and pull in thumbnail photos and the metadata to add to the description for each work
-

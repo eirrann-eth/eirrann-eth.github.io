@@ -1,20 +1,10 @@
 .contactContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 3rem;
-  }
-  
-  .socialLinks {
-    margin-top: 2rem;
-  }
-  
-  .textField {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
-  
-  .submitButton {
-    margin-bottom: 2rem;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: ${({ theme }) => theme.spacing(3)};
+}
+
+.socialLinks {
+  margin-top: ${({ theme }) => theme.spacing(2)};
+}

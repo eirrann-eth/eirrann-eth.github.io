@@ -1,13 +1,13 @@
 .footer {
-    background-color: #000000;
-    color: #f7f7f7;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
+  background-color: #000000;
+  color: #f7f7f7;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
   
   .footer p {
     margin: 0;

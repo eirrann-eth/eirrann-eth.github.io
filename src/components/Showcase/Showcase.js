@@ -5,7 +5,7 @@ import './Showcase.css';
 
 const useStyles = makeStyles((theme) => ({
   showcaseContainer: {
-    // no need to specify padding here anymore
+    padding: theme.spacing(3),
   },
 }));
 
@@ -18,14 +18,10 @@ function Showcase() {
         Showcase
       </Typography>
       <Typography variant="h6" component="h2">
-      Coming soon™
+        Coming soon™
       </Typography>
     </div>
   );
 }
 
 export default Showcase;
-
-
-//for showcase.js, I want to be able to add quick posts with photos and text to provide updates on what I'm currently working on 
-

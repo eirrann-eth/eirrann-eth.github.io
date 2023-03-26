@@ -1,4 +1,5 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import About from './components/About/About';
@@ -8,13 +9,25 @@ import Contact from './components/Contact/Contact';
 import Privacy from './components/Privacy/Privacy';
 import Terms from './components/Terms/Terms';
 import Footer from './components/Footer/Footer';
-import './App.css';
+
+const useStyles = makeStyles(() => ({
+  app: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
+  },
+  main: {
+    flex: 1,
+  },
+}));
 
 function App() {
+  const classes = useStyles();
+
   return (
-    <div className="App">
+    <div className={classes.app}>
       <Header title="eirrann.eth | AI x Art" />
-      <main>
+      <main className={classes.main}>
         <Home />
       </main>
       <Footer />

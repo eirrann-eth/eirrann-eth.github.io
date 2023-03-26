@@ -1,41 +1,35 @@
-/* Privacy.css */
+import { makeStyles } from '@material-ui/core/styles';
 
-/* Style for the main container */
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  /* Style for the heading */
-  h1 {
-    font-size: 36px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  h3 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 30px;
-    margin-bottom: 10px;
-  }
-  
-  /* Style for the paragraphs */
-  p {
-    font-size: 18px;
-    line-height: 1.6;
-    margin-top: 0;
-    margin-bottom: 20px;
-  }
-  
-  /* Style for links */
-  a {
-    color: #BA55D3;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
+const useStyles = makeStyles((theme) => ({
+  container: {
+    maxWidth: 800,
+    margin: '0 auto',
+    padding: theme.spacing(2),
+  },
+  heading: {
+    fontSize: '3rem',
+    fontWeight: 'bold',
+    marginBottom: theme.spacing(2),
+  },
+  subHeading: {
+    fontSize: '2rem',
+    fontWeight: 'bold',
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(1),
+  },
+  paragraph: {
+    fontSize: '1rem',
+    lineHeight: 1.6,
+    marginTop: 0,
+    marginBottom: theme.spacing(2),
+  },
+  link: {
+    color: theme.palette.primary.main,
+    textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'underline',
+    },
+  },
+}));
+
+export default useStyles;

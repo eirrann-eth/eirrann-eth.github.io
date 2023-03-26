@@ -1,4 +1,16 @@
 .showcaseContainer {
-    padding: 24px;
+  padding: 16px;
+  text-align: center;
   }
   
+  .showcaseTitle {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  }
+  
+  .showcaseSubtitle {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 24px;
+  }

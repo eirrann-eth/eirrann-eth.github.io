@@ -1,7 +1,86 @@
 body {
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* add more styles here as needed */
-  
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: ${({ theme }) => theme.palette.text.primary};
+  background-color: ${({ theme }) => theme.palette.background.default};
+}
+
+/* apply styles to all links */
+a {
+  color: ${({ theme }) => theme.palette.text.primary};
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+a:hover {
+  color: ${({ theme }) => theme.palette.primary.main};
+  text-decoration: none;
+}
+
+/* styles for header component */
+header {
+  background-color: ${({ theme }) => theme.palette.background.paper};
+  box-shadow: ${({ theme }) => theme.shadows[1]};
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* styles for main content container */
+main {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 1em;
+}
+
+/* styles for headings */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: ${({ theme }) => theme.typography.h3.fontSize};
+  margin-bottom: ${({ theme }) => theme.spacing(2)};
+}
+
+h2 {
+  font-size: ${({ theme }) => theme.typography.h4.fontSize};
+  margin-bottom: ${({ theme }) => theme.spacing(1)};
+}
+
+h3 {
+  font-size: ${({ theme }) => theme.typography.h5.fontSize};
+  margin-top: ${({ theme }) => theme.spacing(2)};
+  margin-bottom: ${({ theme }) => theme.spacing(1)};
+}
+
+/* styles for paragraphs */
+p {
+  margin: ${({ theme }) => theme.spacing(2)} 0;
+  font-size: ${({ theme }) => theme.typography.body1.fontSize};
+  line-height: ${({ theme }) => theme.typography.body1.lineHeight};
+}
+
+/* styles for lists */
+ul, ol {
+  margin: ${({ theme }) => theme.spacing(2)} 0;
+  padding-left: ${({ theme }) => theme.spacing(2)};
+}
+
+li {
+  margin: ${({ theme }) => theme.spacing(1)} 0;
+}
+
+/* styles for footer component */
+footer {
+  background-color: ${({ theme }) => theme.palette.background.paper};
+  box-shadow: ${({ theme }) => theme.shadows[1]};
+  position: sticky;
+  bottom: 0;
+  z-index: 100;
+  text-align: center;
+  padding: ${({ theme }) => theme.spacing(2)};
+}
