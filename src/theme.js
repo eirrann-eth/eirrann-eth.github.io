@@ -11,8 +11,7 @@ const theme = createTheme({
       main: pink[500], // Deep pink color for linked text
     },
     background: {
-      paper: `radial-gradient(circle at center, ${grey[800]}, ${grey[900]})`, // Radial gradient background with a slightly glossy effect
-      default: grey[900],
+      default: grey[900], // Dark gray color for background
     },
     text: {
       primary: grey[300], // Light gray color for text

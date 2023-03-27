@@ -76,7 +76,7 @@ function About() {
         I have been creating art since high school but only gained the confidence to become serious about art decades later in 2023. <br /><br />
         My work is inspired by the many ways that AI enables humanity and I strive to create glimpses into unseen worlds. <br /><br />
         Please feel free to <Link to="/contact">contact me</Link> if you have any questions or are interested in my work. <br /><br />
-        Also check out my collections in the <Link to="/gallery">Gallery</Link> and what I've been working on lately in the <Link to="/updates">Updates</Link>.
+        Also check out my collections in <Link to="/gallery">Gallery</Link> and what I've been working on lately in <Link to="/updates">Updates</Link>.
       </Typography>
       <div className={classes.ctaContainer}>
         <Button
