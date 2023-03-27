@@ -1,8 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { Typography, Button, IconButton } from '@material-ui/core';
+import { Twitter } from '@material-ui/icons';
+import LinkIcon from '@material-ui/icons/Link';
 
-// This code imports the necessary components from Material UI, as well as the makeStyles function to allow for styling. The useStyles function creates a custom hook that defines the styles for the layout, which is then used in the className prop of the main div element. The Typography component is used to display the page title.
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -10,9 +11,27 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     height: '100vh',
+    textAlign: 'center',
   },
   title: {
     marginBottom: theme.spacing(4),
+    fontSize: '48px',
+    fontWeight: 'bold',
+    textShadow: theme.typography.h2.textShadow,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '36px',
+    },
+  },
+  description: {
+    marginBottom: theme.spacing(4),
+  },
+  socialIcons: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginBottom: theme.spacing(4),
+  },
+  iconButton: {
+    margin: theme.spacing(0, 1),
   },
 }));
 
@@ -24,6 +43,32 @@ function Home() {
       <Typography variant="h2" className={classes.title}>
         eirrann.eth | AI x Art 
       </Typography>
+      <Typography variant="h6" className={classes.description}>
+        Exploring the intersection of artificial intelligence and art. Discover unique creations and learn more about the technology behind them.
+      </Typography>
+      <Button variant="contained" color="secondary" href="/gallery">
+        View Gallery
+      </Button>
+      <div className={classes.socialIcons}>
+        <IconButton
+          color="secondary"
+          className={classes.iconButton}
+          href="https://twitter.com/eirrann_eth"
+          target="_blank"
+          rel="noopener"
+        >
+          <Twitter />
+        </IconButton>
+        <IconButton
+          color="secondary"
+          className={classes.iconButton}
+          href="https://linktr.ee/eirrann_eth"
+          target="_blank"
+          rel="noopener"
+        >
+          <LinkIcon />
+        </IconButton>
+      </div>
     </div>
   );
 }

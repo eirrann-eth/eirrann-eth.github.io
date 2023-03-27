@@ -3,35 +3,35 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-  galleryContainer: {
+  updatesContainer: {
     padding: theme.spacing(3),
     textAlign: 'center',
   },
-  galleryTitle: {
+  updatesTitle: {
     fontSize: theme.typography.h4.fontSize,
     fontWeight: theme.typography.h4.fontWeight,
     marginBottom: theme.spacing(2),
   },
-  gallerySubtitle: {
+  updatesSubtitle: {
     fontSize: theme.typography.h6.fontSize,
     fontWeight: theme.typography.h6.fontWeight,
     marginBottom: theme.spacing(3),
   },
 }));
 
-function Gallery() {
+function Updates() {
   const classes = useStyles();
 
   return (
-    <div className={classes.galleryContainer}>
-      <Typography variant="h4" component="h1" className={classes.galleryTitle} gutterBottom>
-        Gallery
+    <div className={classes.updatesContainer}>
+      <Typography variant="h4" component="h1" className={classes.updatesTitle} gutterBottom>
+        Updates
       </Typography>
-      <Typography variant="h6" component="h2" className={classes.gallerySubtitle}>
+      <Typography variant="h6" component="h2" className={classes.updatesSubtitle}>
         Coming soon™
       </Typography>
     </div>
   );
 }
 
-export default Gallery;
+export default Updates;

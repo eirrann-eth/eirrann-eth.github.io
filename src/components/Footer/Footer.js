@@ -5,11 +5,21 @@ import { Typography, Link } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   footer: {
     backgroundColor: theme.palette.primary.main,
-    color: '#111111',
+    color: theme.palette.text.primary,
     padding: theme.spacing(3),
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
   },
   link: {
-    marginLeft: theme.spacing(1),
+    color: theme.palette.text.primary,
+    textDecoration: 'none',
+    margin: theme.spacing(0, 1),
+    '&:hover': {
+      textDecoration: 'underline',
+    },
   },
 }));
 

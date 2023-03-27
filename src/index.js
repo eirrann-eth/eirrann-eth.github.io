@@ -3,12 +3,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './theme';
-import './index.css';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import About from './components/About/About';
 import Gallery from './components/Gallery/Gallery';
-import Showcase from './components/Showcase/Showcase';
+import Updates from './components/Updates/Updates';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -23,7 +22,7 @@ function Main() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path="/showcase" element={<Showcase />} />
+          <Route path="/updates" element={<Updates />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
