@@ -1,6 +1,6 @@
 # eirrann.eth | AI x Art
 
-A website showcasing AI-generated art by Eirrann. Built using React, Material-UI, and React Router.
+A website showcasing AI-generated art by eirrann.eth. Built using React, Material-UI, and React Router.
 
 ## Table of Contents
 
