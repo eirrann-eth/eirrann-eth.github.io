@@ -1,6 +1,8 @@
 import { createTheme } from "@material-ui/core/styles";
 import { grey, pink } from "@material-ui/core/colors";
 
+const darkerPink = pink[700]; // define a slightly darker shade of pink
+
 const theme = createTheme({
   palette: {
     type: "dark",
@@ -8,7 +10,7 @@ const theme = createTheme({
       main: grey[900], // Black header and footer
     },
     secondary: {
-      main: pink[500], // Deep pink color for linked text
+      main: darkerPink, // use the darker pink color for linked text
     },
     background: {
       default: grey[900], // Dark gray color for background
@@ -49,7 +51,7 @@ const theme = createTheme({
           textDecoration: 'none',
           transition: 'all 0.3s ease-in-out',
           '&:hover': {
-            color: pink[500],
+            color: darkerPink, // use the darker pink color on hover
             textDecoration: 'none',
           },
         },

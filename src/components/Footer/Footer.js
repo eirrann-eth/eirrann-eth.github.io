@@ -32,7 +32,7 @@ function Footer() {
         © {new Date().getFullYear()} eirrann.eth
       </Typography>
       <Typography variant="body2" component="p">
-        Powered by React and Material UI
+        Powered by React and Material UI, coded by GPT4
       </Typography>
       <Typography variant="body2" component="p">
         Contact eirrann.eth
