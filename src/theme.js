@@ -20,24 +20,12 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: ["Raleway", "sans-serif"].join(","),
-    h1: {
-      textShadow: "2px 2px #000000",
-    },
-    h2: {
-      textShadow: "2px 2px #000000",
-    },
-    h3: {
-      textShadow: "2px 2px #000000",
-    },
-    h4: {
-      textShadow: "2px 2px #000000",
-    },
-    h5: {
-      textShadow: "2px 2px #000000",
-    },
-    h6: {
-      textShadow: "2px 2px #000000",
-    },
+    h1: {},
+    h2: {},
+    h3: {},
+    h4: {},
+    h5: {},
+    h6: {},
     button: {
       textTransform: "none",
       fontWeight: "bold",
