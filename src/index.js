@@ -10,7 +10,7 @@ import Gallery from './components/Gallery/Gallery';
 import Updates from './components/Updates/Updates';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'; // Update this line
 
 // Define main component
 function Main() {
@@ -34,9 +34,9 @@ function Main() {
 // Render main component to DOM
 ReactDOM.render(
   <ThemeProvider theme={theme}>
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <Router> {/* Replace BrowserRouter with Router */}
       <Main />
-    </BrowserRouter>
+    </Router>
   </ThemeProvider>,
   document.getElementById('root')
 );
