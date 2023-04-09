@@ -1,35 +1,113 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Airtable from 'airtable';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { Typography, Grid, Modal } from '@material-ui/core';
+import { Skeleton } from '@material-ui/lab';
 
 const useStyles = makeStyles((theme) => ({
-  galleryContainer: {
-    padding: theme.spacing(3),
-    textAlign: 'center',
-  },
-  galleryTitle: {
-    fontSize: theme.typography.h4.fontSize,
-    fontWeight: theme.typography.h4.fontWeight,
+  // Add your existing styles here
+
+  // New styles
+  imageInfo: {
+    marginTop: theme.spacing(1),
     marginBottom: theme.spacing(2),
   },
-  gallerySubtitle: {
-    fontSize: theme.typography.h6.fontSize,
-    fontWeight: theme.typography.h6.fontWeight,
-    marginBottom: theme.spacing(3),
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modalContent: {
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(2),
+    borderRadius: theme.shape.borderRadius,
+    maxWidth: '90%',
+    maxHeight: '90%',
+    overflow: 'auto',
   },
 }));
 
 function Gallery() {
   const classes = useStyles();
+  const [artworks, setArtworks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedArtwork, setSelectedArtwork] = useState(null);
+
+  // Fetch data from Airtable API
+  useEffect(() => {
+    const fetchData = async () => {
+      const airtable = new Airtable({ apiKey: process.env.REACT_APP_AIRTABLE_ACCESS_TOKEN });
+      const base = airtable.base(process.env.REACT_APP_AIRTABLE_BASE_ID);
+      const table = base('eirrann.art gallery'); // Replace with your table name
+
+      const records = await table.select().all();
+      setArtworks(records);
+      setLoading(false);
+    };
+
+    fetchData();
+  }, []);
+
+  const handleClose = () => {
+    setSelectedArtwork(null);
+  };
+
+  if (loading) {
+    return (
+      <div className={classes.galleryContainer}>
+        <Typography variant="h4" component="h1" className={classes.galleryTitle} gutterBottom>
+          Gallery
+        </Typography>
+        <Skeleton variant="rect" width={'100%'} height={200} />
+      </div>
+    );
+  }
 
   return (
     <div className={classes.galleryContainer}>
       <Typography variant="h4" component="h1" className={classes.galleryTitle} gutterBottom>
         Gallery
       </Typography>
-      <Typography variant="h6" component="h2" className={classes.gallerySubtitle}>
-        Coming soon™
-      </Typography>
+      <Grid container spacing={2} className={classes.gridContainer}>
+        {artworks.map((artwork) => (
+          <Grid item xs={12} sm={6} md={4} lg={3} key={artwork.id} className={classes.gridItem}>
+            <img
+              src={artwork.get('image')[0].url}
+              alt={artwork.get('name')}
+              className={classes.img}
+              onClick={() => setSelectedArtwork(artwork)}
+            />
+            <Typography variant="subtitle1" className={classes.imageInfo}>
+              {artwork.get('name')}
+            </Typography>
+          </Grid>
+        ))}
+      </Grid>
+      {selectedArtwork && (
+        <Modal
+          open={!!selectedArtwork}
+          onClose={handleClose}
+          className={classes.modal}
+        >
+          <div className={classes.modalContent}>
+            <img
+              src={selectedArtwork.get('image')[0].url}
+              alt={selectedArtwork.get('name')}
+              className={classes.img}
+            />
+            <Typography variant="h5" gutterBottom>{selectedArtwork.get('name')}</Typography>
+            <Typography variant="subtitle1" gutterBottom>
+              Created by: {selectedArtwork.get('created_by')}
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              Description: {selectedArtwork.get('description')}
+            </Typography>
+            <Typography variant="body2" gutterBottom>
+              Attributes: {selectedArtwork.get('attributes')}
+            </Typography>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 }
