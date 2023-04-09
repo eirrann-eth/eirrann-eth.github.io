@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography, Link } from '@material-ui/core';
+import { Typography, IconButton } from '@material-ui/core';
+import { Twitter } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,9 +37,15 @@ function Contact() {
       <Typography variant="body1" className={classes.body}>
         If you have any questions or feedback, please don't hesitate to get in touch! You can reach out with a message on Twitter.
       </Typography>
-      <Link href="https://twitter.com/eirrann_eth" target="_blank" className={classes.link}>
-        Message on Twitter
-      </Link>
+          <IconButton
+            color="secondary"
+            className={classes.iconButton}
+            href="https://twitter.com/eirrann_eth"
+            target="_blank"
+            rel="noopener"
+          >
+            <Twitter />
+          </IconButton>
     </div>
   );
 }

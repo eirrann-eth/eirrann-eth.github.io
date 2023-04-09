@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography, Link } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -33,15 +33,6 @@ function Footer() {
       </Typography>
       <Typography variant="body2" component="p">
         Powered by React and Material UI, coded by GPT4
-      </Typography>
-      <Typography variant="body2" component="p">
-        Contact eirrann.eth
-        <br />
-        If you have any questions or feedback, please don't hesitate to get in touch! You can reach out with a message on Twitter.
-        <br />
-        <Link href="https://twitter.com/eirrann_eth" target="_blank" rel="noopener" className={classes.link}>
-          Message on Twitter
-        </Link>
       </Typography>
     </footer>
   );

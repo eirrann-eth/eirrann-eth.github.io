@@ -33,6 +33,11 @@ const useStyles = makeStyles((theme) => ({
   iconButton: {
     margin: theme.spacing(0, 1),
   },
+  buttonContainer: {
+    display: 'flex',
+    gap: '16px',
+    marginBottom: theme.spacing(4),
+  },
 }));
 
 function Home() {
@@ -46,9 +51,14 @@ function Home() {
       <Typography variant="h6" className={classes.description}>
         Exploring the intersection of artificial intelligence and art. Discover unique creations and learn more about the technology behind them.
       </Typography>
-      <Button variant="contained" color="secondary" href="/gallery">
-        View Gallery
-      </Button>
+      <div className={classes.buttonContainer}>
+        <Button variant="contained" color="secondary" href="/#/gallery">
+          View Gallery
+        </Button>
+        <Button variant="contained" color="secondary" href="/#/updates">
+          View Updates
+        </Button>
+      </div>
       <div className={classes.socialIcons}>
         <IconButton
           color="secondary"

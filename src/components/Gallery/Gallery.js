@@ -38,7 +38,7 @@ function Gallery() {
     const fetchData = async () => {
       const airtable = new Airtable({ apiKey: process.env.REACT_APP_AIRTABLE_ACCESS_TOKEN });
       const base = airtable.base(process.env.REACT_APP_AIRTABLE_BASE_ID);
-      const table = base('eirrann.art gallery'); // Replace with your table name
+      const table = base('gallery');
 
       const records = await table.select().all();
       setArtworks(records);
@@ -69,21 +69,27 @@ function Gallery() {
         Gallery
       </Typography>
       <Grid container spacing={2} className={classes.gridContainer}>
-        {artworks.map((artwork) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={artwork.id} className={classes.gridItem}>
-            <img
-              src={artwork.get('image')[0].url}
-              alt={artwork.get('name')}
-              className={classes.img}
-              onClick={() => setSelectedArtwork(artwork)}
-            />
-            <Typography variant="subtitle1" className={classes.imageInfo}>
-              {artwork.get('name')}
-            </Typography>
-          </Grid>
-        ))}
+        {artworks.map((artwork) => {
+          const hasImage = artwork.get('image') && artwork.get('image').length > 0;
+
+          return (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={artwork.id} className={classes.gridItem}>
+              {hasImage && (
+                <img
+                  src={artwork.get('image')[0].url}
+                  alt={artwork.get('name')}
+                  className={classes.img}
+                  onClick={() => setSelectedArtwork(artwork)}
+                />
+              )}
+              <Typography variant="subtitle1" className={classes.imageInfo}>
+                {artwork.get('name')}
+              </Typography>
+            </Grid>
+          );
+        })}
       </Grid>
-      {selectedArtwork && (
+      {selectedArtwork && selectedArtwork.get('image') && selectedArtwork.get('image').length > 0 && (
         <Modal
           open={!!selectedArtwork}
           onClose={handleClose}
@@ -95,21 +101,14 @@ function Gallery() {
               alt={selectedArtwork.get('name')}
               className={classes.img}
             />
-            <Typography variant="h5" gutterBottom>{selectedArtwork.get('name')}</Typography>
-            <Typography variant="subtitle1" gutterBottom>
-              Created by: {selectedArtwork.get('created_by')}
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              Description: {selectedArtwork.get('description')}
-            </Typography>
-            <Typography variant="body2" gutterBottom>
-              Attributes: {selectedArtwork.get('attributes')}
-            </Typography>
-          </div>
-        </Modal>
-      )}
-    </div>
-  );
-}
-
-export default Gallery;
+            <Typography variant="h5" gutterBottom>{selectedArtwork
+            .get('name')}</Typography>
+            </div>
+          </Modal>
+        )}
+      </div>
+    );
+  }
+  
+  export default Gallery;
+  

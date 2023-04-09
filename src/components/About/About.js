@@ -81,28 +81,19 @@ function About() {
       <div className={classes.ctaContainer}>
         <Button
           variant="contained"
-          color="primary"
+          color="secondary"
           component={Link}
           to="/gallery"
           >
-            Gallery
+            View Gallery
           </Button>
           <Button
             variant="contained"
-            color="primary"
+            color="secondary"
             component={Link}
             to="/updates"
           >
-            Updates
-          </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            href="https://twitter.com/eirrann_eth"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Twitter
+            View Updates
           </Button>
         </div>
       </div>
