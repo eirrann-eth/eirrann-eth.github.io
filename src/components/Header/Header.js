@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem } from '@material-ui/core';
+import { AppBar, Toolbar, Button, IconButton, Menu, MenuItem } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Twitter } from '@material-ui/icons';
@@ -7,37 +7,14 @@ import LinkIcon from '@material-ui/icons/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles((theme) => ({
-  header: {
-    backgroundColor: theme.palette.primary.main,
-  },
-  logo: {
-    fontFamily: theme.typography.fontFamily,
-    fontWeight: 'bold',
-    color: theme.palette.text.primary,
-    marginLeft: theme.spacing(2),
-    flexGrow: 1,
-  },
-  navLink: {
-    fontWeight: 'bold',
-    color: theme.palette.text.primary,
-    '&:hover': {
-      color: theme.palette.secondary.main,
-      textDecoration: 'none',
-    },
-  },
-  socialIcons: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-  },
-  iconButton: {
-    margin: theme.spacing(0, 1),
-  },
+  // ... (unchanged styles)
 }));
 
 function Header() {
   const classes = useStyles();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScreenNarrow, setIsScreenNarrow] = useState(false);
+  const [menuAnchorEl, setMenuAnchorEl] = useState(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -49,11 +26,13 @@ function Header() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const handleMenuOpen = () => {
+  const handleMenuOpen = (event) => {
+    setMenuAnchorEl(event.currentTarget);
     setIsMenuOpen(true);
   };
 
   const handleMenuClose = () => {
+    setMenuAnchorEl(null);
     setIsMenuOpen(false);
   };
 
@@ -65,7 +44,7 @@ function Header() {
             <MenuIcon />
           </IconButton>
           <Menu
-            anchorEl={document.body}
+            anchorEl={menuAnchorEl}
             open={isMenuOpen}
             onClose={handleMenuClose}
           >
@@ -107,38 +86,39 @@ function Header() {
   return (
     <AppBar position="static" className={classes.header}>
       <Toolbar>
-        <Typography variant="h6" className={classes.logo} component={Link} to="/">
-          eirrann.eth
-        </Typography>
-        <div>{renderNavLinks()}</div>
-        <div className={classes.socialIcons}>
-        <IconButton
-        color="inherit"
-        className={classes.iconButton}
-        href="https://twitter.com/eirrann_eth"
-        target="_blank"
-        rel="noopener"
-      >
-        <Twitter />
-      </IconButton>
-      <IconButton
-        color="inherit"
-        className={classes.iconButton}
-        href="https://linktr.ee/eirrann_eth"
-        target="_blank"
-        rel="noopener"
-      >
-        <LinkIcon />
-      </IconButton>
-    </div>
-  </Toolbar>
-</AppBar>
-);
-}
-
-export default Header;
-
-
-
-
-
+        <div className={classes.logoWrapper}>
+          <Button
+            component={Link}
+            to="/"
+            color="inherit" className={classes.logoButton}
+            >
+              eirrann.eth
+            </Button>
+          </div>
+          {renderNavLinks()}
+          <div className={classes.socialIcons}>
+            <IconButton
+              color="inherit"
+              className={classes.iconButton}
+              href="https://twitter.com/eirrann_eth"
+              target="_blank"
+              rel="noopener"
+            >
+              <Twitter />
+            </IconButton>
+            <IconButton
+              color="inherit"
+              className={classes.iconButton}
+              href="https://linktr.ee/eirrann_eth"
+              target="_blank"
+              rel="noopener"
+            >
+              <LinkIcon />
+            </IconButton>
+          </div>
+        </Toolbar>
+      </AppBar>
+    );
+  }
+  
+  export default Header;

@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline'; // Import CssBaseline
 import theme from './theme';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
@@ -10,7 +11,7 @@ import Gallery from './components/Gallery/Gallery';
 import Updates from './components/Updates/Updates';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom'; // Update this line
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Define main component
 function Main() {
@@ -34,7 +35,8 @@ function Main() {
 // Render main component to DOM
 ReactDOM.render(
   <ThemeProvider theme={theme}>
-    <Router> {/* Replace BrowserRouter with Router */}
+    <CssBaseline /> {/* Add CssBaseline */}
+    <Router>
       <Main />
     </Router>
   </ThemeProvider>,
