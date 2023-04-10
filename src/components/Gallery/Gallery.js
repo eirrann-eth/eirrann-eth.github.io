@@ -12,6 +12,7 @@ import {
   CardMedia,
   Modal,
   IconButton,
+  Button,
 } from '@material-ui/core';
 import { Close as CloseIcon } from '@material-ui/icons';
 const AIRTABLE_ACCESS_TOKEN = process.env.REACT_APP_AIRTABLE_ACCESS_TOKEN;
@@ -67,6 +68,24 @@ const useStyles = makeStyles((theme) => ({
     top: theme.spacing(1),
     right: theme.spacing(1),
   },
+  backButton: {
+    marginBottom: theme.spacing(2),
+  },
+  expandedCard: {
+    width: '100%',
+    maxWidth: 600,
+    backgroundColor: theme.palette.grey[800],
+  },
+  platformLink: {
+    textDecoration: 'underline',
+  },
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 9999, // or any other high number greater than the z-index value of the page content
+  },
+ 
 }));
 
 function Gallery() {
@@ -111,6 +130,46 @@ function Gallery() {
     setSelectedCollection(null);
   };
 
+  const handleBackClick = () => {
+    setSelectedCollection(null);
+  };
+  
+  const renderExpandedCard = () => {
+    if (!selectedArtwork) return null;
+
+    const artwork = selectedArtwork;
+    const hasImage = artwork.get('image') && Array.isArray(artwork.get('image')) && artwork.get('image').length > 0;
+
+    return (
+      <Card className={classes.expandedCard}>
+        {hasImage && (
+          <CardMedia
+            component="img"
+            alt={artwork.get('name')}
+            image={artwork.get('image')[0].url}
+            title={artwork.get('name')}
+          />
+        )}
+        <CardContent>
+          <Typography variant="h5">{artwork.get('name')}</Typography>
+          <Typography variant="subtitle1">Collection: {artwork.get('collection')}</Typography>
+          <Typography variant="subtitle1">Artist: {artwork.get('artist')}</Typography>
+          <Typography variant="subtitle1">
+            View on{' '}
+            <a
+              href={artwork.get('listing')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={classes.platformLink}
+            >
+              {artwork.get('platform_link')}
+            </a>
+          </Typography>
+        </CardContent>
+      </Card>
+    );
+  };
+
   const collectionArtwork = artworks.reduce((result, artwork) => {
     if (!result[artwork.get('collection')]) {
       result[artwork.get('collection')] = artwork;
@@ -147,14 +206,18 @@ function Gallery() {
 
     const filteredArtworks = artworks.filter((artwork) => artwork.get('collection') === selectedCollection);
 
+
+
     return (
       <div className={classes.galleryContainer}>
         <Typography variant="h4" component="h1" className={classes.galleryTitle} gutterBottom>
           {selectedCollection}
         </Typography>
+        <Button variant="contained" color="primary" onClick={handleBackClick} className={classes.backButton}>
+          Back to Gallery
+        </Button>
         <Grid container spacing={2} className={classes.gridContainer}>
-          {filteredArtworks.map((artwork) => {
-            return (
+          {filteredArtworks.map((artwork) => {            return (
               <Grid item xs={12} sm={6} md={4} lg={3} key={artwork.id} className={classes.gridItem}>
                 <Card className={classes.artworkCard}>
                   <CardActionArea onClick={() => handleArtworkClick(artwork)}>
@@ -186,8 +249,7 @@ function Gallery() {
         Gallery
       </Typography>
       <Grid container spacing={2} className={classes.gridContainer}>
-        {collections.map((collection) => {
-          const randomArtwork = artworks
+        {collections.map((collection) => {          const randomArtwork = artworks
             .filter((artwork) => artwork.get('collection') === collection)
             .sort(() => 0.5 - Math.random())[0];
 
@@ -216,13 +278,16 @@ function Gallery() {
           );
         })}
       </Grid>
-      {/* ... */}
+      <Modal open={!!selectedArtwork} onClose={handleClose} className={classes.modal}>
+        <div className={classes.modalContent}>
+          <IconButton edge="end" color="inherit" onClick={handleClose} className={classes.closeButton}>
+            <CloseIcon />
+          </IconButton>
+          {renderExpandedCard()}
+        </div>
+      </Modal>
     </div>
   );
 }
 
 export default Gallery;
-
-
-
-
