@@ -7,6 +7,7 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import About from './components/About/About';
 import Gallery from './components/Gallery/Gallery';
+import Artwork from './components/Gallery/Artwork';
 import Updates from './components/Updates/Updates';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/gallery" component={Gallery} />
+          <Route path="/artwork/:artworkId" component={Artwork} /> 
           <Route path="/updates" component={Updates} />
           <Route path="/contact" component={Contact} />
         </Switch>
