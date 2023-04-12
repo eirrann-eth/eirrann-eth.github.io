@@ -27,8 +27,8 @@ function Updates() {
   useEffect(() => {
     const fetchPosts = async () => {
       const client = createClient({
-        space: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        space: process.env.REACT_APP_CONTENTFUL_SPACE_ID,
+        accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
       });
 
       const response = await client.getEntries({ content_type: 'pageBlogPost' });
