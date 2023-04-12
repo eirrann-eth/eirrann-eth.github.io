@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Airtable from 'airtable';
 import { Skeleton } from '@material-ui/lab';
+import Collection from './Collection';
 import {
   makeStyles,
   Typography,
@@ -13,11 +14,11 @@ import {
   Button,
 } from '@material-ui/core';
 
+
 const AIRTABLE_ACCESS_TOKEN = process.env.REACT_APP_AIRTABLE_ACCESS_TOKEN;
 const AIRTABLE_BASE_ID = process.env.REACT_APP_AIRTABLE_BASE_ID;
 
 const useStyles = makeStyles((theme) => ({
-  // Add or modify your existing styles here
   galleryContainer: {
     maxWidth: '100%',
     margin: '0 auto',
@@ -32,20 +33,6 @@ const useStyles = makeStyles((theme) => ({
   gridItem: {
     display: 'flex',
     justifyContent: 'center',
-  },
-  collectionCard: {
-    backgroundColor: theme.palette.grey[800],
-    width: '100%',
-    textAlign: 'center',
-  },
-  artworkCard: {
-    backgroundColor: theme.palette.grey[800],
-    width: '100%',
-    textAlign: 'center',
-  },
-  cardMedia: {
-    height: 0,
-    paddingTop: '100%',
   },
   backButton: {
     marginBottom: theme.spacing(2),
@@ -81,14 +68,10 @@ function Gallery() {
     fetchData();
   }, []);
 
-  const handleCollectionClick = (collection) => {
-    setSelectedCollection(collection);
-  };
-
   const handleArtworkClick = (artworkId) => {
-    navigate(`/artwork/${artworkId}`);
+    navigate(`/gallery/:collection/${artworkId}`);
   };
-  
+    
   const handleBackToGalleryClick = () => {
     setSelectedCollection(null);
   };
@@ -164,22 +147,7 @@ function Gallery() {
       </Typography>
       <Grid container spacing={4} className={classes.gridContainer}>
         {collections.map((collection) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={collection} className={classes.gridItem}>
-            <Card className={classes.collectionCard}>
-              <CardActionArea onClick={() => handleCollectionClick(collection)}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image={collectionArtwork[collection].get('image')[0].url}
-                  title={collection}
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    {collection}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid>
+          <Collection key={collection} collection={collection} collectionArtwork={collectionArtwork[collection]} />
         ))}
       </Grid>
     </div>
