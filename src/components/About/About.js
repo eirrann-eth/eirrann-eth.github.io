@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: theme.spacing(10),
     },
   },
+
   ctaContainer: {
     display: 'flex',
     flexDirection: 'column',
@@ -60,7 +61,15 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  link: {
+    color: theme.palette.secondary.main,
+    textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'underline',
+    },
+  },
 }));
+
 
 function About() {
   const classes = useStyles();
@@ -72,11 +81,11 @@ function About() {
       </Typography>
       <Typography variant="body1" className={classes.body}>
         I am an emerging AI artist. My background is in photography, which heavily influences my style. <br /><br />
-        I became interested in the intersectionality of AI and art through my identical twin, <a href="https://twitter.com/scizors_eth" target="_blank" rel="noopener noreferrer">scizors.eth</a>, who started exploring the space about a year before me. You can find their work at <a href="https://www.scizors.wtf/" target="_blank" rel="noopener noreferrer">scizors.wtf</a>. <br /><br />
+        I became interested in the intersectionality of AI and art through my identical twin, <a href="https://twitter.com/scizors_eth" target="_blank" rel="noopener noreferrer" className={classes.link}>scizors.eth</a>, who started exploring the space about a year before me. You can find their work at <a href="https://www.scizors.wtf/" target="_blank" rel="noopener noreferrer" className={classes.link}>scizors.wtf</a>. <br /><br />
         I have been creating art since high school but only gained the confidence to become serious about art decades later in 2023. <br /><br />
         My work is inspired by the many ways that AI enables humanity and I strive to create glimpses into unseen worlds. <br /><br />
-        Please feel free to <Link to="/contact">contact me</Link> if you have any questions or are interested in my work. <br /><br />
-        Also check out my collections in <Link to="/gallery">Gallery</Link> and what I've been working on lately in <Link to="/updates">Updates</Link>.
+        Please feel free to <Link to="/contact" className={classes.link}>contact me</Link> if you have any questions or are interested in my work. <br /><br />
+        Also check out my collections in <Link to="/gallery" className={classes.link}>Gallery</Link> and what I've been working on lately in <Link to="/updates" className={classes.link}>Updates</Link>.
       </Typography>
       <div className={classes.ctaContainer}>
         <Button
@@ -99,6 +108,5 @@ function About() {
       </div>
     );
   }
-  
-  export default About;
-  
+
+export default About;
