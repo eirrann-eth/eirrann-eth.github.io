@@ -80,7 +80,7 @@ function About() {
         About eirrann.eth
       </Typography>
       <Typography variant="body1" className={classes.body}>
-        I am an emerging AI artist. My background is in photography, which heavily influences my style. <br /><br />
+        I am an emerging multimedia AI artist. My background is in photography, which heavily influences my style. <br /><br />
         I became interested in the intersectionality of AI and art through my identical twin, <a href="https://twitter.com/scizors_eth" target="_blank" rel="noopener noreferrer" className={classes.link}>scizors.eth</a>, who started exploring the space about a year before me. You can find their work at <a href="https://www.scizors.wtf/" target="_blank" rel="noopener noreferrer" className={classes.link}>scizors.wtf</a>. <br /><br />
         I have been creating art since high school but only gained the confidence to become serious about art decades later in 2023. <br /><br />
         My work is inspired by the many ways that AI enables humanity and I strive to create glimpses into unseen worlds. <br /><br />
