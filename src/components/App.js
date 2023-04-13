@@ -7,7 +7,7 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import About from './components/About/About';
 import Gallery from './components/Gallery/Gallery';
-import Collection from './components/Collection/Collection';
+import Collection from './components/Gallery/Collection';
 import Artwork from './components/Gallery/Artwork';
 import Updates from './components/Updates/Updates';
 import Contact from './components/Contact/Contact';
