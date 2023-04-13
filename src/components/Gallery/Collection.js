@@ -1,69 +1,65 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import {
-  makeStyles,
-  Typography,
-  Grid,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-} from '@material-ui/core';
+import React, { useContext } from "react";
+import { useParams, Link } from "react-router-dom";
+import ImageContext from "./ImageContext";
+import { Grid, Card, CardMedia, Typography, Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-  // Add or modify your existing styles here
-  collectionContainer: {
-    maxWidth: '100%',
-    margin: '0 auto',
+  gridContainer: {
+    justifyContent: "center",
     padding: theme.spacing(2),
   },
-  collectionTitle: {
-    textAlign: 'center',
+  card: {
+    maxWidth: 345,
+    margin: theme.spacing(2),
   },
-  gridContainer: {
-    justifyContent: 'center',
-  },
-  gridItem: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  collectionCard: {
-    backgroundColor: theme.palette.grey[800],
-    width: '100%',
-    textAlign: 'center',
-  },
-  cardMedia: {
+  media: {
     height: 0,
-    paddingTop: '100%',
+    paddingTop: "56.25%", // 16:9
+  },
+  backButton: {
+    margin: theme.spacing(2),
   },
 }));
 
-function Collection({ collection, collectionArtwork }) {
+const Collection = () => {
   const classes = useStyles();
-  const navigate = useNavigate();
+  const { collectionId } = useParams();
+  const { collections } = useContext(ImageContext);
 
-  const handleCollectionClick = () => {
-    navigate(`/gallery/${collection}`);
-  };
+  const collection = collections[collectionId];
 
   return (
-    <Grid item xs={12} sm={6} md={4} lg={3} className={classes.gridItem}>
-      <Card className={classes.collectionCard}>
-        <CardActionArea onClick={handleCollectionClick}>
-          <CardMedia
-            className={classes.cardMedia}
-            image={collectionArtwork.get('image')[0].url}
-            title={collection}
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              {collection}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-    </Grid>
+    <>
+      <Button
+        className={classes.backButton}
+        variant="contained"
+        color="secondary"
+        component={Link}
+        to="/gallery"
+      >
+        Back to Gallery
+      </Button>
+      <Grid container className={classes.gridContainer} spacing={3}>
+        {collection.map((artwork) => (
+          <Grid item key={artwork.id}>
+            <Link to={`/gallery/artwork/${artwork.id}`}>
+              <Card className={classes.card}>
+                <CardMedia
+                  className={classes.media}
+                  image={artwork.fields.image[0].url}
+                  title={artwork.fields.name}
+                />
+                <Typography variant="h6" align="center">
+                  {artwork.fields.name}
+                </Typography>
+              </Card>
+            </Link>
+          </Grid>
+        ))}
+      </Grid>
+    </>
   );
-}
+};
 
 export default Collection;
