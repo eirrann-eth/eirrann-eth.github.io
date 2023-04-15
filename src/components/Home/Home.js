@@ -52,11 +52,11 @@ function Home() {
         Exploring the intersection of artificial intelligence and art. Discover unique creations and learn more about the technology behind them.
       </Typography>
       <div className={classes.buttonContainer}>
-        <Button variant="contained" color="secondary" href="/#/gallery">
-          View Gallery
+        <Button variant="contained" color="secondary" href="/gallery">
+          view gallery
         </Button>
-        <Button variant="contained" color="secondary" href="/#/updates">
-          View Updates
+        <Button variant="contained" color="secondary" href="/updates">
+          view updates
         </Button>
       </div>
       <div className={classes.socialIcons}>

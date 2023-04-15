@@ -48,7 +48,7 @@ const Artwork = () => {
         component={Link}
         to={`/gallery/collection/${collection}`}
       >
-        Back to Collection
+        back to collection
       </Button>
       <Container maxWidth="sm">
         <Typography variant="h4" className={classes.artworkInfo}>
@@ -58,8 +58,8 @@ const Artwork = () => {
           <CardMedia className={classes.media} image={image[0].url} title={name} />
         </Card>
         <Box className={classes.artworkInfo}>
-          <Typography variant="h6">Collection: {collection}</Typography>
-          <Typography variant="h6">Artist: {artist}</Typography>
+          <Typography variant="h6">collection: {collection}</Typography>
+          <Typography variant="h6">artist: {artist}</Typography>
         </Box>
         <Button
           variant="contained"
@@ -68,7 +68,7 @@ const Artwork = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          View on {platform}
+          view on {platform}
         </Button>
       </Container>
     </>

@@ -7,8 +7,27 @@ import LinkIcon from '@material-ui/icons/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles((theme) => ({
-  // ... (unchanged styles)
+  header: {
+    backgroundColor: theme.palette.primary.main,
+  },
+  logoWrapper: {
+    flexGrow: 1,
+  },
+  logoButton: {
+    fontSize: '1.5rem',
+    textTransform: 'none',
+  },
+  navLink: {
+    textTransform: 'none',
+  },
+  socialIcons: {
+    marginLeft: theme.spacing(2),
+  },
+  iconButton: {
+    marginLeft: theme.spacing(1),
+  },
 }));
+
 
 function Header() {
   const classes = useStyles();
@@ -49,16 +68,16 @@ function Header() {
             onClose={handleMenuClose}
           >
             <MenuItem component={Link} to="/about" onClick={handleMenuClose}>
-              About
+              about
             </MenuItem>
             <MenuItem component={Link} to="/gallery" onClick={handleMenuClose}>
-              Gallery
+              gallery
             </MenuItem>
             <MenuItem component={Link} to="/updates" onClick={handleMenuClose}>
-              Updates
+              updates
             </MenuItem>
             <MenuItem component={Link} to="/contact" onClick={handleMenuClose}>
-              Contact
+              contact
             </MenuItem>
           </Menu>
         </div>
@@ -68,16 +87,16 @@ function Header() {
     return (
       <>
         <Button component={Link} to="/about" color="inherit" className={classes.navLink}>
-          About
+          about
         </Button>
         <Button component={Link} to="/gallery" color="inherit" className={classes.navLink}>
-          Gallery
+          gallery
         </Button>
         <Button component={Link} to="/updates" color="inherit" className={classes.navLink}>
-          Updates
+          updates
         </Button>
         <Button component={Link} to="/contact" color="inherit" className={classes.navLink}>
-          Contact
+          contact
         </Button>
       </>
     );

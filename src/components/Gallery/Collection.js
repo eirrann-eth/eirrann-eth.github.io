@@ -38,7 +38,7 @@ const Collection = () => {
         component={Link}
         to="/gallery"
       >
-        Back to Gallery
+        back to gallery
       </Button>
       <Grid container className={classes.gridContainer} spacing={3}>
         {collection.map((artwork) => (

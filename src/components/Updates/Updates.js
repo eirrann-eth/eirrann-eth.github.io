@@ -1,57 +1,100 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
-import { createClient } from 'contentful';
+import contentfulClient from '../../contentfulClient';
+import {
+  makeStyles,
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Typography,
+  Collapse,
+  Grid,
+  IconButton,
+} from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
 
 const useStyles = makeStyles((theme) => ({
-  updatesContainer: {
-    padding: theme.spacing(3),
-    textAlign: 'center',
-  },
-  updatesTitle: {
-    fontSize: theme.typography.h4.fontSize,
-    fontWeight: theme.typography.h4.fontWeight,
+  cardRoot: {
     marginBottom: theme.spacing(2),
   },
-  updatesSubtitle: {
-    fontSize: theme.typography.h6.fontSize,
-    fontWeight: theme.typography.h6.fontWeight,
-    marginBottom: theme.spacing(3),
+  media: {
+    height: 140,
+  },
+  expandedContent: {
+    marginTop: theme.spacing(2),
+  },
+  closeButton: {
+    position: 'absolute',
+    top: theme.spacing(1),
+    right: theme.spacing(1),
   },
 }));
 
 function Updates() {
   const classes = useStyles();
   const [posts, setPosts] = useState([]);
+  const [expandedPost, setExpandedPost] = useState(null);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const client = createClient({
-        space: process.env.REACT_APP_CONTENTFUL_SPACE_ID,
-        accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
+      const response = await contentfulClient.getEntries({
+        content_type: 'pageBlogPost',
       });
-
-      const response = await client.getEntries({ content_type: 'pageBlogPost' });
       setPosts(response.items);
     };
 
     fetchPosts();
   }, []);
 
+  const handleExpandClick = (id) => {
+    setExpandedPost(expandedPost === id ? null : id);
+  };
+
   return (
-    <div className={classes.updatesContainer}>
-      <Typography variant="h4" component="h1" className={classes.updatesTitle} gutterBottom>
-        Updates
-      </Typography>
-      {posts.map((post, index) => (
-        <div key={index}>
-          <Typography variant="h6" component="h2">
-            {post.fields.title}
-          </Typography>
-          <Typography>{post.fields.intro}</Typography>
-        </div>
+    <Grid container direction="column" alignItems="center">
+      {posts?.map((post, index) => (
+        <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
+          <Card className={classes.cardRoot}>
+            <CardActionArea onClick={() => handleExpandClick(post.sys.id)}>
+              <CardMedia
+                className={classes.media}
+                featuredImage={post.fields.featuredImage.fields.file.url}
+                title={post.fields.title}
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {post.fields.title}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {post.fields.shortDescription}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <Collapse in={expandedPost === post.sys.id} timeout="auto" unmountOnExit>
+              <CardContent>
+                <IconButton
+                  edge="end"
+                  color="inherit"
+                  onClick={() => handleExpandClick(post.sys.id)}
+                  aria-label="close"
+                  className={classes.closeButton}
+                >
+                  <CloseIcon />
+                </IconButton>
+                <Typography variant="h6">Author: {post.fields.author}</Typography>
+                <Typography className={classes.expandedContent}>{post.fields.content}</Typography>
+                <Typography variant="h6">Related Blog Posts:</Typography>
+                <ul>
+                  {post.fields.relatedBlogPosts.map((relatedBlogPost) => (
+                    <li key={relatedBlogPost.sys.id}>{relatedBlogPost.fields.title}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Collapse>
+          </Card>
+        </Grid>
       ))}
-    </div>
+    </Grid>
   );
 }
 

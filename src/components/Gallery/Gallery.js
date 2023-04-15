@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from "react";
 import ImageContext, { ImageProvider } from "./ImageContext";
-import { BrowserRouter as Router, Route, Swtich } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Collection from "./Collection";
 import Artwork from "./Artwork";
 import axios from "axios";
-import { Grid, Card, CardMedia, Typography, Switch } from "@material-ui/core";
+import { Grid, Card, CardMedia, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     height: 0,
-    paddingTop: "56.25%", // 16:9
+    paddingTop: "56.25%",
   },
 }));
 
@@ -56,7 +56,7 @@ const Gallery = () => {
     };
     fetchData();
   }, [setCollections, setImages]);
-  
+
   const GalleryView = () => (
     <Grid container className={classes.gridContainer} spacing={3}>
       {Object.keys(collections).map((collection) => (
@@ -79,11 +79,16 @@ const Gallery = () => {
   );
 
   return (
-    <Switch>
-      <Route exact path="/gallery" component={GalleryView} />
-      <Route path="/gallery/collection/:collectionId" component={Collection} />
-      <Route path="/gallery/artwork/:artworkId" component={Artwork} />
-    </Switch>
+    <>
+      <Routes>
+        <Route index element={<GalleryView />} path="/gallery/*" />
+        <Route
+          element={<Collection />}
+          path="/gallery/collection/:collectionId"
+        />
+        <Route element={<Artwork />} path="/gallery/artwork/:artworkId" />
+      </Routes>
+    </>
   );
 };
 

@@ -32,7 +32,7 @@ function Contact() {
   return (
     <div className={classes.root}>
       <Typography variant="h2" className={classes.title}>
-        Contact eirrann.eth
+        contact eirrann.eth
       </Typography>
       <Typography variant="body1" className={classes.body}>
         If you have any questions or feedback, please don't hesitate to get in touch! You can reach out with a message on Twitter.

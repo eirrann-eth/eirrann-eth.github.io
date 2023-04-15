@@ -77,7 +77,7 @@ function About() {
   return (
     <div className={classes.root}>
       <Typography variant="h2" className={classes.title}>
-        About eirrann.eth
+        about eirrann.eth
       </Typography>
       <Typography variant="body1" className={classes.body}>
         I am an emerging multimedia AI artist. My background is in photography, which heavily influences my style. <br /><br />
@@ -94,7 +94,7 @@ function About() {
           component={Link}
           to="/gallery"
           >
-            View Gallery
+            view gallery
           </Button>
           <Button
             variant="contained"
@@ -102,7 +102,7 @@ function About() {
             component={Link}
             to="/updates"
           >
-            View Updates
+            view updates
           </Button>
         </div>
       </div>
